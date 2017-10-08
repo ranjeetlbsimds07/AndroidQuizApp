@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.inducesmile.androidquizadminpanel.HomeActivity;
 import com.inducesmile.androidquizadminpanel.R;
 
 import java.io.IOException;
@@ -172,7 +173,7 @@ public class PlayGame extends ActionBarActivity {
             case R.id.answer_2:
                 answer = 2;
                 //Toast.makeText(PlayGame.this,answerButtons[1].getText().toString(),Toast.LENGTH_SHORT).show();
-                if(arrayListResult.contains(answerButtons[0].getText().toString())){
+                if(arrayListResult.contains(answerButtons[1].getText().toString())){
                     correctAns++;
                     correctAnswer();
                 }else{
@@ -357,6 +358,9 @@ public class PlayGame extends ActionBarActivity {
         answerButtons[3] = (Button) findViewById(R.id.answer_4);
 
         hideAnswerImage();
+        if(HomeActivity.userEmail.equalsIgnoreCase("")){
+            pointsText.setVisibility(View.INVISIBLE);
+        }
     }
 
     //Updates life and score texts

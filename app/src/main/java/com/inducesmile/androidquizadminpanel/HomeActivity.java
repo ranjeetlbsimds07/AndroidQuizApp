@@ -7,6 +7,7 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -70,6 +71,9 @@ public class HomeActivity extends AppCompatActivity {
 
         if(getIntent().getExtras() != null && getIntent().getStringExtra("EMAIL") != null){
             userEmail = getIntent().getStringExtra("EMAIL");
+        }
+        if(userEmail.equalsIgnoreCase("")){
+            btnLogout.setVisibility(View.GONE);
         }
 
         selectedFragment = new QuizTopicsFragment();

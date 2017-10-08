@@ -39,7 +39,9 @@ public class LoginOptionActivity extends AppCompatActivity {
         withOutLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent accountsIntent = new Intent(LoginOptionActivity.this, HomeActivity.class);
+                accountsIntent.putExtra("EMAIL", "");
+                startActivity(accountsIntent);
             }
         });
     }

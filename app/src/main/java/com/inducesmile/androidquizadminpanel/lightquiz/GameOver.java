@@ -3,6 +3,7 @@ package com.inducesmile.androidquizadminpanel.lightquiz;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,6 +19,7 @@ public class GameOver extends ActionBarActivity {
     int score;
     private Player currentPlayer;
     private int correctAns;
+    public static int Getscore = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +63,14 @@ public class GameOver extends ActionBarActivity {
     private void showFinalScore() {
         TextView scoreText = (TextView) findViewById(R.id.score_text);
         //scoreText.setText("Score: " + score);
-        scoreText.setText("Score: " + correctAns*10);
+        if(HomeActivity.userEmail.equalsIgnoreCase("")){
+            scoreText.setText("Without registration your score will not be store, To see your score please create login.");
+            scoreText.setTextSize(TypedValue.COMPLEX_UNIT_PX,getResources().getDimension(R.dimen.font_size));
+
+        }else {
+            scoreText.setText("Score: " + correctAns * 10);
+            Getscore =  correctAns * 10;
+        }
         if (setHighScore()) {
             TextView newHighScoreText = (TextView) findViewById(R.id.new_highscore_text);
             newHighScoreText.setVisibility(View.VISIBLE);

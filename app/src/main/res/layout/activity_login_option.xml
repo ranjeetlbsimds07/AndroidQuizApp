@@ -69,7 +69,7 @@
                 android:padding="@dimen/_12sdp"
                 android:text="WITHOUT LOGIN"
                 android:textColor="@color/white"
-                android:visibility="invisible"/>
+                android:visibility="visible"/>
 
             <TextView
                 android:id="@+id/login_link"

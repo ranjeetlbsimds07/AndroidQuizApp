@@ -19,6 +19,10 @@ public class HelpActivity extends AppCompatActivity {
         if (extras != null) {
             category = extras.getString(AppConstant.CATEGORY);
         }
+        if(HomeActivity.userEmail.equalsIgnoreCase("")){
+            (findViewById(R.id.text3)).setVisibility(View.GONE);
+            (findViewById(R.id.text4)).setVisibility(View.GONE);
+        }
 
         Button startButton = (Button)findViewById(R.id.start_button);
         startButton.setOnClickListener(new View.OnClickListener() {
