@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.inducesmile.androidquizadminpanel.database.DatabaseHelper;
+import com.inducesmile.androidquizadminpanel.mail.DataStatic;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -42,7 +43,8 @@ public class LoginActivity extends AppCompatActivity {
         forgottenPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent forgotIntent = new Intent(LoginActivity.this, ForgotPasswordActivity.class);
+                startActivity(forgotIntent);
             }
         });
 
@@ -68,6 +70,10 @@ public class LoginActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(!DataStatic.emailValidator(email.getText().toString().trim())){
+                    Toast.makeText(LoginActivity.this, "Enter Valid Email", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(password.getText().toString().trim())){
                     Toast.makeText(LoginActivity.this, "Please Enter Password", Toast.LENGTH_LONG).show();
                     return;

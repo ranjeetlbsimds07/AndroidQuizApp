@@ -65,6 +65,10 @@
             android:screenOrientation="portrait"/>
         <activity android:name="com.inducesmile.androidquizadminpanel.lightquiz.GameOver"
             android:screenOrientation="portrait"/>
+        <activity android:name=".ForgotPasswordActivity"
+            android:theme="@style/AppThemeFullScreen"
+            android:windowSoftInputMode="adjustPan"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

@@ -2,9 +2,7 @@ package com.inducesmile.androidquizadminpanel;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
@@ -14,10 +12,21 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.creativityapps.gmailbackgroundlibrary.BackgroundMail;
 import com.inducesmile.androidquizadminpanel.database.DatabaseHelper;
 import com.inducesmile.androidquizadminpanel.database.User;
-import com.inducesmile.androidquizadminpanel.mail.GMailSender;
+import com.inducesmile.androidquizadminpanel.mail.Config;
+import com.inducesmile.androidquizadminpanel.mail.DataStatic;
+import com.inducesmile.androidquizadminpanel.mail.SendMailTask;
+
+import java.util.Properties;
+
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -63,6 +72,10 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
 
+                if(!DataStatic.emailValidator(email.getText().toString().trim())){
+                    Toast.makeText(SignUpActivity.this, "Enter Valid Email", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if(TextUtils.isEmpty(password.getText().toString().trim())){
                     Toast.makeText(SignUpActivity.this, "Enter Password", Toast.LENGTH_LONG).show();
                     return;
@@ -75,7 +88,7 @@ public class SignUpActivity extends AppCompatActivity {
                     user.setPassword(password.getText().toString().trim());
 
                     databaseHelper.addUser(user);
-                    sendEmail();
+                    sendEmail(email.getText().toString().trim());
                     // Snack Bar to show success message that record saved successfully
                     Toast.makeText(SignUpActivity.this, "Registration Successful", Toast.LENGTH_LONG).show();
                     Intent intentRegister = new Intent(getApplicationContext(), LoginActivity.class);
@@ -94,60 +107,12 @@ public class SignUpActivity extends AppCompatActivity {
 
     }
 
-    private void sendEmail() {
-        /*Intent i = new Intent(Intent.ACTION_SEND);
-        //i.setType("message/rfc822");
-        i.setType("text/plain");
-        i.putExtra(Intent.EXTRA_EMAIL  , new String[]{email.getText().toString().trim()});
-        i.putExtra(Intent.EXTRA_SUBJECT, "Quiz Registration");
-        i.putExtra(Intent.EXTRA_TEXT   , "Congrats Your Registration has been successfully");
-        try {
-            startActivity(Intent.createChooser(i, "Send mail..."));
-        } catch (android.content.ActivityNotFoundException ex) {
-            Toast.makeText(SignUpActivity.this, "There are no email clients installed.", Toast.LENGTH_SHORT).show();
-        }*/
-       /* runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                BackgroundMail.newBuilder(SignUpActivity.this)
-                        .withUsername("ranjeetnovo@gmail.com")
-                        .withPassword("novo@123")
-                        .withMailto(email.getText().toString().trim())
-                        .withType(BackgroundMail.TYPE_PLAIN)
-                        .withSubject("this is the subject")
-                        .withBody("this is the body")
-                        .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
-                            @Override
-                            public void onSuccess() {
-                                //do some magic
-                            }
-                        })
-                        .withOnFailCallback(new BackgroundMail.OnFailCallback() {
-                            @Override
-                            public void onFail() {
-                                //do some magic
-                            }
-                        })
-                        .send();
-            }
-        });*/
-        new Thread(new Runnable() {
+    private void sendEmail(String email) {
 
-            @Override
-            public void run() {
-                try {
-                    GMailSender sender = new GMailSender("ranjeetnovo@gmail.com", "password");
-                    sender.sendMail("This is Subject",
-                            "This is Body",
-                            "user@gmail.com",
-                            "user@yahoo.com");
-                } catch (Exception e) {
-                    Log.e("SendMail", e.getMessage(), e);
-                }
+        new SendMailTask(SignUpActivity.this).execute(Config.EMAIL,
+                Config.PASSWORD, email, "Quiz App Registration", "Your Registration has been sucessfully");
 
-            }
 
-        }).start();
 
     }
 }
