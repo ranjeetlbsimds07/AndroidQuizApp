@@ -5,6 +5,6 @@ package com.inducesmile.androidquizadminpanel.mail;
  */
 
 public class Config {
-    public static final String EMAIL ="novoinventandroid@gmail.com";
-    public static final String PASSWORD ="Staging1234%";
+    public static final String EMAIL ="mydummyapp29@gmail.com";
+    public static final String PASSWORD ="dummypass";
 }
