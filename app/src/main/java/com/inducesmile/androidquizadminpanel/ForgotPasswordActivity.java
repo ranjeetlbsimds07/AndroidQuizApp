@@ -51,7 +51,8 @@ public class ForgotPasswordActivity  extends AppCompatActivity {
             public void onClick(View v) {
 
                 if(!DataStatic.emailValidator(email.getText().toString().trim())){
-                    Toast.makeText(ForgotPasswordActivity.this, "Enter Valid Email", Toast.LENGTH_LONG).show();
+                    //Toast.makeText(ForgotPasswordActivity.this, "Enter Valid Email", Toast.LENGTH_LONG).show();
+                    Toast.makeText(ForgotPasswordActivity.this, "Email id does not exist.", Toast.LENGTH_LONG).show();
                     return;
                 }else {
                     List<User> userList = databaseHelper.checkUserEmail(email.getText().toString().trim());

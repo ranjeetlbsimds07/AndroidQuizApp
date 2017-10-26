@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Quiz Admin</string>
     <string name="first_title">Complete Quiz</string>
+    <string name="complete_quiz">Complete Quiz</string>
     <string name="first_description">Learning made easy through fun</string>
     <string name="second_description">Compete with your peers and show off with your result</string>
     <string name="third_description">Educative and addictive quiz game for you</string>
@@ -41,7 +42,7 @@
         <item>Spain</item>
         <item>German</item>
         <item>Korean</item>
-        <item>Hindu</item>
+        <item>Hindi</item>
     </string-array>
     <string name="title_activity_home">General Quiz</string>
     <string name="title_home">Home</string>

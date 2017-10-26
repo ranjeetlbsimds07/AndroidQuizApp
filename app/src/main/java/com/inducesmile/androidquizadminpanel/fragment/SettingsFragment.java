@@ -45,7 +45,7 @@ public class SettingsFragment extends Fragment {
         languages.add("English");
         languages.add("French");
         languages.add("Spanish");
-        languages.add("Hindu");
+        languages.add("Hindi");
         languages.add("Arabic");
         CustomSpinnerAdapter customSpinnerAdapter=new CustomSpinnerAdapter(getActivity(),languages);
         spinnerCustom.setAdapter(customSpinnerAdapter);

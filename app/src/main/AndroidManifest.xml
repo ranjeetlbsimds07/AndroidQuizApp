@@ -42,30 +42,39 @@
             android:screenOrientation="portrait"/>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/title_activity_home"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity
             android:name=".QuizHomeActivity"
             android:launchMode="singleTop"
+            android:label="@string/complete_quiz"
             android:theme="@style/AppThemeFullScreen"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>
         <activity android:name=".QuizResultActivity"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name=".ProfileActivity"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name=".QuizCategoryActivity"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name=".HelpActivity"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
 
         <activity android:name="com.inducesmile.androidquizadminpanel.lightquiz.MainActivity"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name="com.inducesmile.androidquizadminpanel.lightquiz.PlayGame"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name="com.inducesmile.androidquizadminpanel.lightquiz.GameOver"
+            android:label="@string/complete_quiz"
             android:screenOrientation="portrait"/>
         <activity android:name=".ForgotPasswordActivity"
+            android:label="@string/complete_quiz"
             android:theme="@style/AppThemeFullScreen"
             android:windowSoftInputMode="adjustPan"
             android:screenOrientation="portrait"/>

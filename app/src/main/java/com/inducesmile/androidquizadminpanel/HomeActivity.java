@@ -11,6 +11,7 @@ import android.text.TextUtils;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.inducesmile.androidquizadminpanel.fragment.HomeFragment;
 import com.inducesmile.androidquizadminpanel.fragment.LadderBoardFragment;
@@ -24,6 +25,9 @@ public class HomeActivity extends AppCompatActivity {
     private Fragment selectedFragment = null;
     public static String userEmail="";
     private Button btnLogout;
+    private TextView txtUserName;
+    private TextView txtEmail;
+    private SharedPreference sharedPreference;
 
 
 
@@ -60,10 +64,16 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnLogout = (Button)findViewById(R.id.btnLogout);
+        txtUserName = (TextView) findViewById(R.id.txtUserName);
+        txtEmail = (TextView) findViewById(R.id.txtEmail);
+        sharedPreference = new SharedPreference();
+
         btnLogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent accountsIntent = new Intent(HomeActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                sharedPreference.userName(HomeActivity.this, "");
+                sharedPreference.userEmail(HomeActivity.this,"");
                 startActivity(accountsIntent);
                 finish();
             }
@@ -71,9 +81,15 @@ public class HomeActivity extends AppCompatActivity {
 
         if(getIntent().getExtras() != null && getIntent().getStringExtra("EMAIL") != null){
             userEmail = getIntent().getStringExtra("EMAIL");
+            txtUserName.setText(sharedPreference.getUserName(HomeActivity.this));
+            txtEmail.setText(sharedPreference.getUserEmail(HomeActivity.this));
+            txtUserName.setVisibility(View.VISIBLE);
+            txtEmail.setVisibility(View.VISIBLE);
         }
         if(userEmail.equalsIgnoreCase("")){
             btnLogout.setVisibility(View.GONE);
+            txtUserName.setVisibility(View.GONE);
+            txtEmail.setVisibility(View.GONE);
         }
 
         selectedFragment = new QuizTopicsFragment();
@@ -86,8 +102,25 @@ public class HomeActivity extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        // do nothing.
+        if(TextUtils.isEmpty(userEmail)){
+            super.onBackPressed();
+        }else {
+
+            // do nothing.
+        }
     }
 
-
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(!TextUtils.isEmpty(sharedPreference.getUserName(HomeActivity.this))) {
+            txtUserName.setText(sharedPreference.getUserName(HomeActivity.this));
+            txtEmail.setText(sharedPreference.getUserEmail(HomeActivity.this));
+            txtUserName.setVisibility(View.VISIBLE);
+            txtEmail.setVisibility(View.VISIBLE);
+        }else{
+            txtUserName.setVisibility(View.GONE);
+            txtEmail.setVisibility(View.GONE);
+        }
+    }
 }

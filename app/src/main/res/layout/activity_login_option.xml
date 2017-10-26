@@ -80,7 +80,8 @@
                 android:text="@string/already_registered_login"
                 android:textColor="@color/colorWhite"
                 android:textSize="@dimen/_11sdp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:visibility="gone"/>
 
         </LinearLayout>
 
