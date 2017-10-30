@@ -10,6 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
+import com.inducesmile.androidquizadminpanel.HomeActivity;
 import com.inducesmile.androidquizadminpanel.R;
 
 
@@ -89,6 +90,29 @@ public class MainActivity extends ActionBarActivity {
     public void startGame(View view) {
         switch (view.getId()) {
             case R.id.start_button:
+                if(category.equalsIgnoreCase("GeneralKnowledge")){
+                    HomeActivity.generalKnowledge = false;
+                }
+                //Entertainment
+                if(category.equalsIgnoreCase("Entertainment")){
+                    HomeActivity.entertainment = false;
+                }
+                //History
+                if(category.equalsIgnoreCase("History")){
+                    HomeActivity.history = false;
+                }
+                //Sports
+                if(category.equalsIgnoreCase("Sports")){
+                    HomeActivity.sports = false;
+                }
+                //Business
+                if(category.equalsIgnoreCase("Business")){
+                    HomeActivity.businessts = false;
+                }
+                //Computer
+                if(category.equalsIgnoreCase("Computer")){
+                    HomeActivity.computer = false;
+                }
                 Intent intent = new Intent(this, PlayGame.class);
                 intent.putExtra("Genre", category);
                 startActivity(intent);

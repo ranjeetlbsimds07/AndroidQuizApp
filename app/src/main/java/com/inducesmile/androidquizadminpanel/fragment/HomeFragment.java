@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.inducesmile.androidquizadminpanel.HomeActivity;
 import com.inducesmile.androidquizadminpanel.R;
+import com.inducesmile.androidquizadminpanel.SharedPreference;
 import com.inducesmile.androidquizadminpanel.adapter.QuizAdapter;
 import com.inducesmile.androidquizadminpanel.models.QuizObject;
 
@@ -27,6 +28,7 @@ public class HomeFragment extends Fragment{
     private TextView playerName, playerStatus, playerScore;
 
     private Button quizStartButton;
+    private SharedPreference sharedPreference;
 
     public HomeFragment() {
     }
@@ -36,12 +38,15 @@ public class HomeFragment extends Fragment{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
         getActivity().setTitle("Home");
+        sharedPreference = new SharedPreference();
 
         playerName = (TextView)view.findViewById(R.id.player_name);
         playerStatus = (TextView)view.findViewById(R.id.player_status);
         playerScore = (TextView)view.findViewById(R.id.player_score);
         if(!TextUtils.isEmpty(HomeActivity.userEmail)) {
-            playerName.setText(HomeActivity.userEmail);
+            //playerName.setText(HomeActivity.userEmail);
+            playerName.setText(sharedPreference.getUserName(getContext()));
+            playerStatus.setText((sharedPreference.getUserEmail(getContext())));
         }else{
             playerName.setText("");
         }

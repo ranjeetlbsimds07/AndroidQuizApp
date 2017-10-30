@@ -21,4 +21,19 @@ public class AnswerUtility {
 
     public static ArrayList<String> computerList = new ArrayList<>();
     //World Wide Web,Arithmetic logic unit Control unit, Vaccum Tubes and Magnetic Drum, Mother Board,Multiprocessor
+
+    public static ArrayList<String> secondLabelList = new ArrayList<>();
+    /*
+    BSE
+    Muammar Gaddafi
+    34th
+    Easy Day Stores
+    Symbian
+    Tata Airlines
+    Rashtriya Lok Dal
+    100
+    74%
+    Reginald Dyer
+    https://www.tenquestion.com/10-mixed-general-knowledge-multiple-choice-questions/
+     */
 }

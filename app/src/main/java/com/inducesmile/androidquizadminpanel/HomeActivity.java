@@ -12,11 +12,13 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.inducesmile.androidquizadminpanel.fragment.HomeFragment;
 import com.inducesmile.androidquizadminpanel.fragment.LadderBoardFragment;
 import com.inducesmile.androidquizadminpanel.fragment.QuizTopicsFragment;
 import com.inducesmile.androidquizadminpanel.fragment.SettingsFragment;
+import com.inducesmile.androidquizadminpanel.lightquiz.AppConstant;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -27,7 +29,16 @@ public class HomeActivity extends AppCompatActivity {
     private Button btnLogout;
     private TextView txtUserName;
     private TextView txtEmail;
+    private Button txtSecondLabel;
     private SharedPreference sharedPreference;
+
+    public static boolean generalKnowledge = true;
+    public static boolean entertainment = true;
+    public static boolean history = true;
+    public static boolean sports = true;
+    public static boolean businessts = true;
+    public static boolean computer = true;
+    public static boolean secondLabel = true;
 
 
 
@@ -40,15 +51,23 @@ public class HomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.quiz_mart:
                     selectedFragment = new QuizTopicsFragment();
+                    txtSecondLabel.setVisibility(View.VISIBLE);
+                    txtUserName.setVisibility(View.VISIBLE);
                     break;
                 case R.id.home:
                     selectedFragment = new HomeFragment();
+                    txtSecondLabel.setVisibility(View.GONE);
+                    txtUserName.setVisibility(View.GONE);
                     break;
                 case R.id.ladder_board:
                     selectedFragment = new LadderBoardFragment();
+                    txtSecondLabel.setVisibility(View.GONE);
+                    txtUserName.setVisibility(View.VISIBLE);
                     break;
                 case R.id.settings:
                     selectedFragment = new SettingsFragment();
+                    txtSecondLabel.setVisibility(View.GONE);
+                    txtUserName.setVisibility(View.VISIBLE);
                     break;
             }
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
@@ -64,6 +83,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         btnLogout = (Button)findViewById(R.id.btnLogout);
+        txtSecondLabel = (Button)findViewById(R.id.txtSecondLabel);
         txtUserName = (TextView) findViewById(R.id.txtUserName);
         txtEmail = (TextView) findViewById(R.id.txtEmail);
         sharedPreference = new SharedPreference();
@@ -74,17 +94,40 @@ public class HomeActivity extends AppCompatActivity {
                 Intent accountsIntent = new Intent(HomeActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 sharedPreference.userName(HomeActivity.this, "");
                 sharedPreference.userEmail(HomeActivity.this,"");
+                generalKnowledge = true;
+                entertainment = true;
+                history = true;
+                sports = true;
+                businessts = true;
+                computer = true;
                 startActivity(accountsIntent);
                 finish();
             }
         });
 
+
+        txtSecondLabel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+                    Intent profileIntent = new Intent(HomeActivity.this, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY, AppConstant.SECOND_LABEL);
+                    startActivity(profileIntent);
+                }else {
+                    /*Intent profileIntent = new Intent(HomeActivity.this, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY, AppConstant.SECOND_LABEL);
+                    startActivity(profileIntent);*/
+
+                    Toast.makeText(HomeActivity.this,"Please attempt all topice then start second label ",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
         if(getIntent().getExtras() != null && getIntent().getStringExtra("EMAIL") != null){
             userEmail = getIntent().getStringExtra("EMAIL");
             txtUserName.setText(sharedPreference.getUserName(HomeActivity.this));
             txtEmail.setText(sharedPreference.getUserEmail(HomeActivity.this));
             txtUserName.setVisibility(View.VISIBLE);
-            txtEmail.setVisibility(View.VISIBLE);
+            //txtEmail.setVisibility(View.VISIBLE);
         }
         if(userEmail.equalsIgnoreCase("")){
             btnLogout.setVisibility(View.GONE);
@@ -117,7 +160,7 @@ public class HomeActivity extends AppCompatActivity {
             txtUserName.setText(sharedPreference.getUserName(HomeActivity.this));
             txtEmail.setText(sharedPreference.getUserEmail(HomeActivity.this));
             txtUserName.setVisibility(View.VISIBLE);
-            txtEmail.setVisibility(View.VISIBLE);
+            //txtEmail.setVisibility(View.VISIBLE);
         }else{
             txtUserName.setVisibility(View.GONE);
             txtEmail.setVisibility(View.GONE);

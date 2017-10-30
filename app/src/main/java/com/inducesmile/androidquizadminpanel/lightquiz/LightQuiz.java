@@ -68,6 +68,19 @@ public class LightQuiz extends Application {
         AnswerUtility.computerList.add("Vaccum Tubes and Magnetic Drum");
         AnswerUtility.computerList.add("Mother Board");
         AnswerUtility.computerList.add("Multiprocessor");
+
+        //SecondLabel
+        AnswerUtility.secondLabelList.clear();
+        AnswerUtility.secondLabelList.add("BSE");
+        AnswerUtility.secondLabelList.add("Muammar Gaddafi");
+        AnswerUtility.secondLabelList.add("34th");
+        AnswerUtility.secondLabelList.add("Easy Day Stores");
+        AnswerUtility.secondLabelList.add("Symbian");
+        AnswerUtility.secondLabelList.add("Tata Airlines");
+        AnswerUtility.secondLabelList.add("Rashtriya Lok Dal");
+        AnswerUtility.secondLabelList.add("100");
+        AnswerUtility.secondLabelList.add("74%");
+        AnswerUtility.secondLabelList.add("Reginald Dyer");
     }
 
     public void loadRawQuestions() throws IOException {

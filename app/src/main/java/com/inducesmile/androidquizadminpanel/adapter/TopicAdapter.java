@@ -7,8 +7,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.inducesmile.androidquizadminpanel.HelpActivity;
+import com.inducesmile.androidquizadminpanel.HomeActivity;
 import com.inducesmile.androidquizadminpanel.QuizCategoryActivity;
 import com.inducesmile.androidquizadminpanel.lightquiz.AppConstant;
 import com.inducesmile.androidquizadminpanel.models.QuizObject;
@@ -34,7 +36,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicViewHolder>{
     }
 
     @Override
-    public void onBindViewHolder(TopicViewHolder holder, int position) {
+    public void onBindViewHolder(final TopicViewHolder holder, int position) {
         final QuizObject quizObject = quizList.get(position);
         holder.quizName.setText(quizObject.getQuizName());
         //holder.quizImage.setImageResource(R.drawable.profile);
@@ -43,9 +45,51 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicViewHolder>{
             @Override
             public void onClick(View v) {
                 //Intent profileIntent = new Intent(context, QuizCategoryActivity.class);
-                Intent profileIntent = new Intent(context, HelpActivity.class);
-                profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
-                context.startActivity(profileIntent);
+                /*if((HomeActivity.generalKnowledge ||
+                        HomeActivity.entertainment ||
+                        HomeActivity.history ||
+                        HomeActivity.sports ||
+                        HomeActivity.businessts ||
+                        HomeActivity.computer)
+                        && quizObject.getQuizName().toString().equalsIgnoreCase(holder.quizName.getText().toString())){
+
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+
+                }else{
+                    Toast.makeText(context,"You have already attempt to "+quizObject.getQuizName().toString(),Toast.LENGTH_LONG).show();
+                }*/
+
+
+                if(HomeActivity.generalKnowledge && quizObject.getQuizName().toString().equalsIgnoreCase("General Knowledge")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else if(HomeActivity.entertainment && quizObject.getQuizName().toString().equalsIgnoreCase("Entertainment")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else if(HomeActivity.history && quizObject.getQuizName().toString().equalsIgnoreCase("History")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else if(HomeActivity.sports && quizObject.getQuizName().toString().equalsIgnoreCase("Sports")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else if(HomeActivity.computer && quizObject.getQuizName().toString().equalsIgnoreCase("Computer")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else if(HomeActivity.businessts && quizObject.getQuizName().toString().equalsIgnoreCase("Business")){
+                    Intent profileIntent = new Intent(context, HelpActivity.class);
+                    profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                    context.startActivity(profileIntent);
+                }else{
+                    Toast.makeText(context,"You have already attempt to "+quizObject.getQuizName().toString(),Toast.LENGTH_LONG).show();
+                }
+
             }
         });
     }

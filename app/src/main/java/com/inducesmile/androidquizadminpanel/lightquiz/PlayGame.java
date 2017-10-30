@@ -25,7 +25,8 @@ import java.util.ArrayList;
 public class PlayGame extends ActionBarActivity {
     private final int questionsDelay = 500;
     private final int questionsPoints = 10;
-    private final int questionSeconds = 8;
+    //private final int questionSeconds = 8;
+    private final int questionSeconds = 40;
     private int points;
     private int lives;
     private int correctAnswer;
@@ -85,6 +86,10 @@ public class PlayGame extends ActionBarActivity {
 
         if(genreSelection.equalsIgnoreCase(QuestionGenre.GeneralKnowledge.toString())){
             arrayListResult = AnswerUtility.generalKnowledgeList;
+        }
+
+        if(genreSelection.equalsIgnoreCase(QuestionGenre.SecondLabel.toString())){
+            arrayListResult = AnswerUtility.secondLabelList;
         }
 
 
@@ -150,7 +155,7 @@ public class PlayGame extends ActionBarActivity {
     @Override
     public void onBackPressed() {
         // this.finish();
-        gameOver();
+        //gameOver();
     }
 
     //an answer was clicked
@@ -419,4 +424,6 @@ public class PlayGame extends ActionBarActivity {
         }
         this.generator = new QuestionsGenerator();
     }
+
+
 }

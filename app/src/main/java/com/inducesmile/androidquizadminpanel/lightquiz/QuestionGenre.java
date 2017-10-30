@@ -6,7 +6,7 @@ package com.inducesmile.androidquizadminpanel.lightquiz;
 public enum QuestionGenre {
     //GEOGRAFIA, CIENCIAS, ARTE, CINE,GeneralKnowledge, Entertainment,History,
     // Sports,Business,Computer,ArtAndDesign,Computer,Movies;
-    GeneralKnowledge, Entertainment,History,Sports,Business,Computer;
+    GeneralKnowledge, Entertainment,History,Sports,Business,Computer,SecondLabel;
 
 
     public static String[] names() {

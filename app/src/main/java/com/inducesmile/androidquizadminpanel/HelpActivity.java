@@ -29,6 +29,30 @@ public class HelpActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Intent startButtonIntent = new Intent(HelpActivity.this, QuizHomeActivity.class);
+               /* if(category.equalsIgnoreCase("General Knowledge")){
+                    HomeActivity.generalKnowledge = false;
+                }
+                //Entertainment
+                if(category.equalsIgnoreCase("Entertainment")){
+                    HomeActivity.entertainment = false;
+                }
+                //History
+                if(category.equalsIgnoreCase("History")){
+                    HomeActivity.history = false;
+                }
+                //Sports
+                if(category.equalsIgnoreCase("Sports")){
+                    HomeActivity.sports = false;
+                }
+                //Business
+                if(category.equalsIgnoreCase("Business")){
+                    HomeActivity.businessts = false;
+                }
+                //Computer
+                if(category.equalsIgnoreCase("Computer")){
+                    HomeActivity.computer = false;
+                }*/
+
                 Intent startButtonIntent = new Intent(HelpActivity.this, MainActivity.class);
                 startButtonIntent.putExtra(AppConstant.CATEGORY,category);
                 startActivity(startButtonIntent);

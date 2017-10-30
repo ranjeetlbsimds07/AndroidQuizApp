@@ -6,4 +6,5 @@ package com.inducesmile.androidquizadminpanel.lightquiz;
 
 public class AppConstant {
     public static final String CATEGORY = "CATEGORY";
+    public static final String SECOND_LABEL = "SecondLabel";
 }
