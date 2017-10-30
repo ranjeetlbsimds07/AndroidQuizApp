@@ -26,8 +26,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:baselineAligned="false"
-        android:minWidth="100dp"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -73,7 +71,9 @@
         android:layout_alignParentStart="true"
         android:layout_below="@+id/space"
         android:text="@string/question"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:paddingTop="8dp"
+        />
 
     <Space
         android:id="@+id/space"
@@ -123,9 +123,20 @@
         android:text="@string/life"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:textColor="#ee2222"
-        android:textSize="30sp" />
-
+        android:textSize="30sp"
+        />
     <TextView
+        android:id="@+id/countdown_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/life_text"
+        android:text="N"
+        android:textSize="20sp"
+        android:layout_marginBottom="10dp"/>
+
+
+    <!--<TextView
         android:id="@+id/countdown_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,10 +144,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/linearLayout"
-        android:layout_toStartOf="@+id/linearLayout"
         android:text="N"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:textSize="48sp" />
+        android:textSize="30sp"
+        android:layout_marginRight="15dp"/>-->
 
     <Button
         android:id="@+id/sound_button"

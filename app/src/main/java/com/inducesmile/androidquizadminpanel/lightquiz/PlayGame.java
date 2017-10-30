@@ -268,7 +268,7 @@ public class PlayGame extends ActionBarActivity {
             countdown = new CountDownTimer(questionSeconds * 1000, 500) {
                 @Override
                 public void onTick(long millisUntilFinished) {
-                    countdownText.setText(Integer.toString((int) (millisUntilFinished / 1000) + 1));
+                    countdownText.setText("Time: "+Integer.toString((int) (millisUntilFinished / 1000) + 1));
             /* if(millisUntilFinished/1000 == 1) {
                  wrongAnswer();
                  updateTexts();
