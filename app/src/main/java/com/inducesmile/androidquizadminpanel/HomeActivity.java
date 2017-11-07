@@ -130,9 +130,15 @@ public class HomeActivity extends AppCompatActivity {
             //txtEmail.setVisibility(View.VISIBLE);
         }
         if(userEmail.equalsIgnoreCase("")){
-            btnLogout.setVisibility(View.GONE);
+            //btnLogout.setVisibility(View.GONE);
             txtUserName.setVisibility(View.GONE);
             txtEmail.setVisibility(View.GONE);
+        }
+
+        if(!TextUtils.isEmpty(sharedPreference.getUserEmail(this))){
+            btnLogout.setText("Logout");
+        }else{
+            btnLogout.setText("Exit");
         }
 
         selectedFragment = new QuizTopicsFragment();
@@ -164,6 +170,10 @@ public class HomeActivity extends AppCompatActivity {
         }else{
             txtUserName.setVisibility(View.GONE);
             txtEmail.setVisibility(View.GONE);
+        }
+
+        if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+            txtSecondLabel.setVisibility(View.VISIBLE);
         }
     }
 }

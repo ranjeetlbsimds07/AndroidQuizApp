@@ -55,6 +55,7 @@
             android:layout_alignParentRight="true"
             android:text="Second Label"
             android:layout_below="@+id/btnLogout"
+            android:visibility="gone"
             android:paddingRight="@dimen/_10sdp"/>
 
 

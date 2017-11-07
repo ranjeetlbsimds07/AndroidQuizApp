@@ -1,10 +1,12 @@
 package com.inducesmile.androidquizadminpanel.lightquiz;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.text.TextUtils;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -12,18 +14,23 @@ import android.widget.TextView;
 
 import com.inducesmile.androidquizadminpanel.HomeActivity;
 import com.inducesmile.androidquizadminpanel.R;
+import com.inducesmile.androidquizadminpanel.SharedPreference;
 
 
 public class MainActivity extends ActionBarActivity {
     //public static QuestionsGenerator generator;
     private Player currentPlayer;
     private String category="";
+    private SharedPreference sharedPreference;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Bundle extras = getIntent().getExtras();
+        sharedPreference = new SharedPreference();
+        context = this;
         if (extras != null) {
             if(extras.getString(AppConstant.CATEGORY).equalsIgnoreCase("General Knowledge")){
                 category="GeneralKnowledge";
@@ -90,28 +97,30 @@ public class MainActivity extends ActionBarActivity {
     public void startGame(View view) {
         switch (view.getId()) {
             case R.id.start_button:
-                if(category.equalsIgnoreCase("GeneralKnowledge")){
-                    HomeActivity.generalKnowledge = false;
-                }
-                //Entertainment
-                if(category.equalsIgnoreCase("Entertainment")){
-                    HomeActivity.entertainment = false;
-                }
-                //History
-                if(category.equalsIgnoreCase("History")){
-                    HomeActivity.history = false;
-                }
-                //Sports
-                if(category.equalsIgnoreCase("Sports")){
-                    HomeActivity.sports = false;
-                }
-                //Business
-                if(category.equalsIgnoreCase("Business")){
-                    HomeActivity.businessts = false;
-                }
-                //Computer
-                if(category.equalsIgnoreCase("Computer")){
-                    HomeActivity.computer = false;
+                if(!TextUtils.isEmpty(sharedPreference.getUserEmail(context))) {
+                    if (category.equalsIgnoreCase("GeneralKnowledge")) {
+                        HomeActivity.generalKnowledge = false;
+                    }
+                    //Entertainment
+                    if (category.equalsIgnoreCase("Entertainment")) {
+                        HomeActivity.entertainment = false;
+                    }
+                    //History
+                    if (category.equalsIgnoreCase("History")) {
+                        HomeActivity.history = false;
+                    }
+                    //Sports
+                    if (category.equalsIgnoreCase("Sports")) {
+                        HomeActivity.sports = false;
+                    }
+                    //Business
+                    if (category.equalsIgnoreCase("Business")) {
+                        HomeActivity.businessts = false;
+                    }
+                    //Computer
+                    if (category.equalsIgnoreCase("Computer")) {
+                        HomeActivity.computer = false;
+                    }
                 }
                 Intent intent = new Intent(this, PlayGame.class);
                 intent.putExtra("Genre", category);
