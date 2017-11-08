@@ -62,7 +62,7 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicViewHolder>{
                 }*/
 
 
-                if(HomeActivity.generalKnowledge && quizObject.getQuizName().toString().equalsIgnoreCase("General Knowledge")){
+                /*if(HomeActivity.generalKnowledge && quizObject.getQuizName().toString().equalsIgnoreCase("General Knowledge")){
                     Intent profileIntent = new Intent(context, HelpActivity.class);
                     profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
                     context.startActivity(profileIntent);
@@ -88,8 +88,11 @@ public class TopicAdapter extends RecyclerView.Adapter<TopicViewHolder>{
                     context.startActivity(profileIntent);
                 }else{
                     Toast.makeText(context,"You have already attempt to "+quizObject.getQuizName().toString(),Toast.LENGTH_LONG).show();
-                }
+                }*/
 
+                Intent profileIntent = new Intent(context, HelpActivity.class);
+                profileIntent.putExtra(AppConstant.CATEGORY,quizObject.getQuizName().toString());
+                context.startActivity(profileIntent);
             }
         });
     }
