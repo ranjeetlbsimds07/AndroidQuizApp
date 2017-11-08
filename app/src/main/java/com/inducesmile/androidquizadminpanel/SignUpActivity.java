@@ -80,11 +80,16 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Enter Password", Toast.LENGTH_LONG).show();
                     return;
                 }
+                if(isAlphaNumeric(password.getText().toString().trim())){
+                    Toast.makeText(SignUpActivity.this, "Password should be AlphaNumeric ", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 int length = password.getText().length();
                 if(length < 6){
                     Toast.makeText(SignUpActivity.this, "Length of password should be greater than or equal 6 digits ", Toast.LENGTH_LONG).show();
                     return;
                 }
+
                 if (!databaseHelper.checkUser(email.getText().toString().trim())) {
 
                     user.setName(fullname.getText().toString().trim());
@@ -110,7 +115,10 @@ public class SignUpActivity extends AppCompatActivity {
         });
 
     }
-
+    public boolean isAlphaNumeric(String s){
+        String pattern= "^[a-zA-Z0-9]*$";
+        return s.matches(pattern);
+    }
     private void sendEmail(String email) {
 
         new SendMailTask(SignUpActivity.this).execute(Config.EMAIL,
