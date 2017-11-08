@@ -80,7 +80,11 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Enter Password", Toast.LENGTH_LONG).show();
                     return;
                 }
-
+                int length = password.getText().length();
+                if(length < 6){
+                    Toast.makeText(SignUpActivity.this, "Length of password should be greater than or equal 6 digits ", Toast.LENGTH_LONG).show();
+                    return;
+                }
                 if (!databaseHelper.checkUser(email.getText().toString().trim())) {
 
                     user.setName(fullname.getText().toString().trim());

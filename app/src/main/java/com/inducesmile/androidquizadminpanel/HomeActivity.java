@@ -19,6 +19,7 @@ import com.inducesmile.androidquizadminpanel.fragment.LadderBoardFragment;
 import com.inducesmile.androidquizadminpanel.fragment.QuizTopicsFragment;
 import com.inducesmile.androidquizadminpanel.fragment.SettingsFragment;
 import com.inducesmile.androidquizadminpanel.lightquiz.AppConstant;
+import com.inducesmile.androidquizadminpanel.lightquiz.GameOver;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -51,7 +52,12 @@ public class HomeActivity extends AppCompatActivity {
             switch (item.getItemId()) {
                 case R.id.quiz_mart:
                     selectedFragment = new QuizTopicsFragment();
-                    txtSecondLabel.setVisibility(View.VISIBLE);
+                    //txtSecondLabel.setVisibility(View.VISIBLE);
+                    if(GameOver.Getscore >=200 ){
+                        txtSecondLabel.setVisibility(View.VISIBLE);
+                    }else{
+                        txtSecondLabel.setVisibility(View.GONE);
+                    }
                     txtUserName.setVisibility(View.VISIBLE);
                     break;
                 case R.id.home:
@@ -94,6 +100,16 @@ public class HomeActivity extends AppCompatActivity {
                 Intent accountsIntent = new Intent(HomeActivity.this, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 sharedPreference.userName(HomeActivity.this, "");
                 sharedPreference.userEmail(HomeActivity.this,"");
+
+
+                sharedPreference.setGeneralKnowledge(HomeActivity.this,0+"");
+                sharedPreference.setComputer(HomeActivity.this,0+"");
+                sharedPreference.setBusiness(HomeActivity.this,0+"");
+                sharedPreference.setEntertainment(HomeActivity.this,0+"");
+                sharedPreference.setSports(HomeActivity.this,0+"");
+                sharedPreference.setHistory(HomeActivity.this,0+"");
+                GameOver.Getscore = 0;
+
                 generalKnowledge = true;
                 entertainment = true;
                 history = true;
@@ -109,7 +125,8 @@ public class HomeActivity extends AppCompatActivity {
         txtSecondLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+                //if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+                if(GameOver.Getscore >=200 ){
                     Intent profileIntent = new Intent(HomeActivity.this, HelpActivity.class);
                     profileIntent.putExtra(AppConstant.CATEGORY, AppConstant.SECOND_LABEL);
                     startActivity(profileIntent);
@@ -172,8 +189,11 @@ public class HomeActivity extends AppCompatActivity {
             txtEmail.setVisibility(View.GONE);
         }
 
-        if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+        //if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
+        if(GameOver.Getscore >=200 ){
             txtSecondLabel.setVisibility(View.VISIBLE);
+        }else{
+            txtSecondLabel.setVisibility(View.GONE);
         }
     }
 }

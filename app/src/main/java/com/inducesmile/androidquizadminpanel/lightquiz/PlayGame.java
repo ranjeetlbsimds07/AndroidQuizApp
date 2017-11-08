@@ -26,7 +26,7 @@ public class PlayGame extends ActionBarActivity {
     private final int questionsDelay = 500;
     private final int questionsPoints = 10;
     //private final int questionSeconds = 8;
-    private final int questionSeconds = 10;
+    private final int questionSeconds = 40;
     private int points;
     private int lives;
     private int correctAnswer;
@@ -167,7 +167,7 @@ public class PlayGame extends ActionBarActivity {
             case R.id.answer_1:
                 answer = 1;
                 //Toast.makeText(PlayGame.this,answerButtons[0].getText().toString(),Toast.LENGTH_SHORT).show();
-                if(arrayListResult.contains(answerButtons[0].getText().toString())){
+                if(arrayListResult.contains(answerButtons[0].getText().toString().trim())){
                     correctAns++;
                     correctAnswer();
                 }else{
@@ -178,7 +178,7 @@ public class PlayGame extends ActionBarActivity {
             case R.id.answer_2:
                 answer = 2;
                 //Toast.makeText(PlayGame.this,answerButtons[1].getText().toString(),Toast.LENGTH_SHORT).show();
-                if(arrayListResult.contains(answerButtons[1].getText().toString())){
+                if(arrayListResult.contains(answerButtons[1].getText().toString().trim())){
                     correctAns++;
                     correctAnswer();
                 }else{
@@ -189,7 +189,7 @@ public class PlayGame extends ActionBarActivity {
             case R.id.answer_3:
                 answer = 3;
                 //Toast.makeText(PlayGame.this,answerButtons[2].getText().toString(),Toast.LENGTH_SHORT).show();
-                if(arrayListResult.contains(answerButtons[2].getText().toString())){
+                if(arrayListResult.contains(answerButtons[2].getText().toString().trim())){
                     correctAns++;
                     correctAnswer();
                 }else{
@@ -200,7 +200,7 @@ public class PlayGame extends ActionBarActivity {
             case R.id.answer_4:
                 answer = 4;
                 //Toast.makeText(PlayGame.this,answerButtons[3].getText().toString(),Toast.LENGTH_SHORT).show();
-                if(arrayListResult.contains(answerButtons[3].getText().toString())){
+                if(arrayListResult.contains(answerButtons[3].getText().toString().trim())){
                     correctAns++;
                     correctAnswer();
                 }else{
@@ -390,6 +390,7 @@ public class PlayGame extends ActionBarActivity {
         Intent intent = new Intent(this, GameOver.class);
         intent.putExtra("Score", points);
         intent.putExtra("correctAns", correctAns);
+        intent.putExtra("genreSelection", genreSelection);
         startActivity(intent);
         this.finish();
     }
