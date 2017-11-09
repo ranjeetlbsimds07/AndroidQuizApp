@@ -22,7 +22,7 @@
     <string name="already_registered_login">Already registered! login</string>
     <string name="no_registration">If used without registration your score will not be stored</string>
     <string name="rule_one">1. Answer the question as fast as you can to save time</string>
-    <string name="rule_two">2. You have a maximum of 8 seconds to answer each question</string>
+    <string name="rule_two">2. You have a maximum of 10 seconds to answer each question</string>
     <string name="rule_three">3. You have 3 lives and after that you loss the quiz game. See testing the quiz also</string>
     <string name="rule_four">3. Each correct answer contain 10 marks.</string>
     <!--<string name="rule_five">5. If you finish a particular quiz before the allocated time you will gain extra point going into a new quiz game</string>-->
