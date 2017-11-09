@@ -26,7 +26,7 @@ public class PlayGame extends ActionBarActivity {
     private final int questionsDelay = 500;
     private final int questionsPoints = 10;
     //private final int questionSeconds = 8;
-    private final int questionSeconds = 40;
+    private final int questionSeconds = 10;
     private int points;
     private int lives;
     private int correctAnswer;
