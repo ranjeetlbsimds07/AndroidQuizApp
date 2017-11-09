@@ -64,7 +64,7 @@ public class LightQuiz extends Application {
         //ComputerList
         AnswerUtility.computerList.clear();
         AnswerUtility.computerList.add("World Wide Web");
-        AnswerUtility.computerList.add("Arithmetic logic unit Control unit");
+        AnswerUtility.computerList.add("Arithmetic logic unit, Control unit");
         AnswerUtility.computerList.add("Vaccum Tubes and Magnetic Drum");
         AnswerUtility.computerList.add("Mother Board");
         AnswerUtility.computerList.add("Multiprocessor");

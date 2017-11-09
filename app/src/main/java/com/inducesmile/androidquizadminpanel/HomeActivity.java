@@ -190,7 +190,7 @@ public class HomeActivity extends AppCompatActivity {
         }
 
         //if(!generalKnowledge && !entertainment && !history && !sports && !businessts && !computer){
-        if(GameOver.Getscore >=200 ){
+        if(GameOver.Getscore >=290 ){
             txtSecondLabel.setVisibility(View.VISIBLE);
         }else{
             txtSecondLabel.setVisibility(View.GONE);
